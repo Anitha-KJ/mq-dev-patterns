@@ -119,8 +119,7 @@ public class JmsPut {
 
         CCDTURL = env.getCheckForCCDT();
 
-        // If the CCDT is in use then a connection string will 
-        // not be needed.
+        // If the CCDT is in use then a connection string will not be needed.
         if (null == CCDTURL) {
             ConnectionString = env.getConnectionString();
         }
