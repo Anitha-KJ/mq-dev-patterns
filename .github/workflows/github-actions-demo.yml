@@ -1,9 +1,8 @@
 name: Run Unit Tests for Regression
 
 on:
-  pull_request:
-    branches:
-      - regression-test_anitha
+  branches:
+    - regression-test_anitha
 jobs:
   test:
     runs-on: ubuntu-latest
