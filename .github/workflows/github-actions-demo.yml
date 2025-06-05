@@ -1,0 +1,16 @@
+name: Run Unit Tests for Regression
+
+on:
+  pull_request:
+    branches:
+      - regression-test_anitha
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run the JMS tests
+        run: |
+          mvn -Dmaven.test.skip=false test
+      - run: echo JMS tests have been executed
+      
