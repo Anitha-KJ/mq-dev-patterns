@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Run the JMS tests
-        path: ./JMS
+        working-directory: ./JMS
         run: |
           mvn -Dmaven.test.skip=false test
       - run: echo JMS tests have been executed
