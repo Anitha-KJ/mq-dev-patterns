@@ -225,8 +225,7 @@ public class JmsGet {
                 logger.info("Will be making use of CCDT File " + CCDTURL);
                 cf.setStringProperty(WMQConstants.WMQ_CCDTURL, CCDTURL);
                 
-                // Set the WMQ_CLIENT_RECONNECT_OPTIONS property to allow 
-                // the MQ JMS classes to attempt a reconnect 
+                // Set the WMQ_CLIENT_RECONNECT_OPTIONS property to allow the MQ JMS classes to attempt a reconnect 
                 // cf.setIntProperty(WMQConstants.WMQ_CLIENT_RECONNECT_OPTIONS, WMQConstants.WMQ_CLIENT_RECONNECT);
             }
 
