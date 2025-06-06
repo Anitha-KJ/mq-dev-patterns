@@ -83,7 +83,7 @@ function publishMessage(hObj) {
   }
   var msg = JSON.stringify(msgObject);
 
-  var mqmd = new mq.MQMD(); // Defaults are fine.
+  var mqmd = new mq.MQMD();   // Defaults are fine.
   var pmo = new mq.MQPMO();
 
   // Describe how the Publish (Put) should behave
