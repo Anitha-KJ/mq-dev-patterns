@@ -90,8 +90,7 @@ function publishMessage(hObj) {
   pmo.Options = MQC.MQPMO_NO_SYNCPOINT |
     MQC.MQPMO_NEW_MSG_ID |
     MQC.MQPMO_NEW_CORREL_ID;
-  // Add in the flag that gives a warning if noone is
-  // subscribed to this topic.
+  // Add in the flag that gives a warning if noone is subscribed to this topic.
   pmo.Options |= MQC.MQPMO_WARN_IF_NO_SUBS_MATCHED;
   mq.Put(hObj, mqmd, pmo, msg, function(err) {
     if (err && 'object' === typeof err && err.mqrc &&

@@ -1,4 +1,4 @@
-name: Regression testing automation
+name: Run JMS Tests
 
 on:
   push:

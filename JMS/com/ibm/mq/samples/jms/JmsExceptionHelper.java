@@ -23,7 +23,7 @@ import javax.jms.JMSRuntimeException;
 
 /*
  * A helper class to report JMS exceptions in a common way
- */
+*/
 public class JmsExceptionHelper {
 
   static void recordFailure(Logger logger, Exception ex) {
