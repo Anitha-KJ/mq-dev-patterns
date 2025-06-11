@@ -321,7 +321,6 @@ var promises = [];
 var numOpenConnections = env.MQ_ENDPOINTS.length;
 
 // Process each endpoint in turn
-//
 env.MQ_ENDPOINTS.forEach((point, index) => {
   debug_info('Processing endpoint at %d ', index);
   promises.push(cycleEndpoint(index));
