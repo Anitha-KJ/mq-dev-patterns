@@ -68,6 +68,7 @@ public class ConnectionHelper {
     public ConnectionHelper (String id, int index) {
 
         //initialiseLogging();
+        //
         mqConnectionVariables(id, index);
         logger.info("Get application is starting");
 
