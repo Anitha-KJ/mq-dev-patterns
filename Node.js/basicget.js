@@ -311,6 +311,7 @@ function cycleEndpoint(index) {
 // The program really starts here.
 // Connect to the queue manager. If that works, the callback function
 // opens the queue, and then we can start to retrieve messages.
+//
 
 debug_info("Sample MQ GET application start");
 
