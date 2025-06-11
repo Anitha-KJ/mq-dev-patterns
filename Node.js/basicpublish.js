@@ -107,8 +107,6 @@ function publishMessage(hObj) {
 
 // amqspub:warn Error Detected in Put operation { MQError: PUT: MQCC = MQCC_WARNING [1] MQRC = MQRC_NO_SUBS_MATCHED [2550]
 
-
-
 // When we're done, close topics and connections
 function cleanup(hConn, hObj) {
   mq.Close(hObj, 0, function(err) {
