@@ -22,7 +22,7 @@ import javax.jms.JMSException;
 // Use these imports for building with Jakarta Messaging
 // import jakarta.jms.JMSContext;
 // import jakarta.jms.JMSException;
-
+// 
 import com.ibm.msg.client.jms.JmsConnectionFactory;
 import com.ibm.msg.client.jms.JmsFactoryFactory;
 import com.ibm.msg.client.wmq.WMQConstants;
