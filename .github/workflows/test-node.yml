@@ -1,4 +1,4 @@
-name: Run Node.js Tests
+name: Run Node.js Tests with IBM MQ in Podman
 
 on:
   push:
@@ -8,12 +8,35 @@ on:
       - 'Node.js/**'
 
 jobs:
-  test-with-podman:
+  test:
     runs-on: ubuntu-latest
+    env:
+      EnvFile: "./Node.js/env.json"  # EnvFile path for Node.js
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Create env.json
+        working-directory: Node.js
+        run: |
+          cat << EOF > env.json
+          {
+            "MQ_ENDPOINTS": [{
+              "HOST": "127.0.0.1",
+              "PORT": "1414",
+              "CHANNEL": "DEV.APP.SVRCONN",
+              "QMGR": "QM1",
+              "APP_USER": "app",
+              "APP_PASSWORD": "passw0rd",
+              "QUEUE_NAME": "DEV.QUEUE.1",
+              "BACKOUT_QUEUE": "DEV.QUEUE.2",
+              "MODEL_QUEUE_NAME": "DEV.APP.MODEL.QUEUE",
+              "DYNAMIC_QUEUE_PREFIX": "APP.REPLIES.*",
+              "TOPIC_NAME": "dev/"
+            }]
+          }
+          EOF
 
       - name: Install Podman
         run: |

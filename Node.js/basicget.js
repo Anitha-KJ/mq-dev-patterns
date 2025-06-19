@@ -36,7 +36,7 @@ var decoder = new StringDecoder('utf8');
 
 // Load up missing envrionment variables from the env.json file
 // var env = require('../env.json');
-// 
+
 // Want to refer to this export directly for simplicity
 var MQC = mq.MQC;
 
