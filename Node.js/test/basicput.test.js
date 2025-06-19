@@ -1,7 +1,17 @@
 const { toHexString, getConnection, putMessage, ccdtCheck } = require('../basicput');
 const { buildMQDetails,initialise,connx } = require('../basicget');
 const mq = require('ibmmq');
-const envConfig = require('../../env.json');
+const constants = require('./../constants');
+constants.ENV_FILE_KEY = "EnvFile"
+constants.DEFAULT_ENV_FILE = "../../env.json";
+// Load up missing envrionment variables from the env.json file
+const env_file = process.env[constants.ENV_FILE_KEY] || constants.DEFAULT_ENV_FILE;
+
+// debug_info(`environment being loaded from ${env_file}`);
+
+// Load up environment variables from the env.json file
+const envConfig = require(env_file);
+// const envConfig = require('../../env.json');
 const { assert, expect } = require('chai');
 const envConfigLength = envConfig['MQ_ENDPOINTS'].length;
 const MQC = mq.MQC;

@@ -1,7 +1,17 @@
 const { buildMQDetails, ccdtCheck, initialise, connx, open, close, disconnect, getMessage } = require('../basicget');
 const mq = require('ibmmq');
 const exec = require('child_process').exec;
-const envConfig = require('../../env.json');
+const constants = require('./../constants');
+constants.ENV_FILE_KEY = "EnvFile"
+constants.DEFAULT_ENV_FILE = "../../env.json";
+// Load up missing envrionment variables from the env.json file
+const env_file = process.env[constants.ENV_FILE_KEY] || constants.DEFAULT_ENV_FILE;
+
+// debug_info(`environment being loaded from ${env_file}`);
+
+// Load up environment variables from the env.json file
+const envConfig = require(env_file);
+// const envConfig = require('../../env.json');
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised'); // Assertion library of Chai which handles testing of Promise related functions
 const { assert, expect } = require('chai');

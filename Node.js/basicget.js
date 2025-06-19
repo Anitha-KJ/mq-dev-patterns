@@ -25,6 +25,7 @@
 //
 // Values for Queue Manager, Queue, Host, Port and Channel are
 // passed in as envrionment variables.
+const constants = require('./constants');
 
 const fs = require('fs');
 // Import the MQ package
@@ -34,7 +35,7 @@ var StringDecoder = require('string_decoder').StringDecoder;
 var decoder = new StringDecoder('utf8');
 
 // Load up missing envrionment variables from the env.json file
-var env = require('../env.json');
+// var env = require('../env.json');
 
 // Want to refer to this export directly for simplicity
 var MQC = mq.MQC;
@@ -42,6 +43,16 @@ var MQC = mq.MQC;
 // Set up debug logging options
 var debug_info = require('debug')('amqsget:info');
 var debug_warn = require('debug')('amqsget:warn');
+
+constants.ENV_FILE_KEY = "EnvFile"
+constants.DEFAULT_ENV_FILE = "../env.json";
+// Load up missing envrionment variables from the env.json file
+const env_file = process.env[constants.ENV_FILE_KEY] || constants.DEFAULT_ENV_FILE;
+
+debug_info(`environment being loaded from ${env_file}`);
+
+// Load up environment variables from the env.json file
+var env = require(env_file);
 
 // Set up Constants
 const CCDT = "MQCCDTURL";

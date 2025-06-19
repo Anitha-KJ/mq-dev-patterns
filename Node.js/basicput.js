@@ -25,19 +25,30 @@
 //
 // Values for Queue Manager, Queue, Host, Port and Channel are
 // passed in as envrionment variables.
+// const constants = require('./constants');
 
 const fs = require('fs');
 // Import the MQ package
 const mq = require('ibmmq');
 
 // Load up missing envrionment variables from the env.json file
-var env = require('../env.json');
+// var env = require('../env.json');
 
 var MQC = mq.MQC;
 
 // Set up debug logging options
 var debug_info = require('debug')('amqsput:info');
 var debug_warn = require('debug')('amqsput:warn');
+
+const ENV_FILE_KEY = "EnvFile"
+const DEFAULT_ENV_FILE = "../env.json";
+// Load up missing envrionment variables from the env.json file
+const env_file = process.env[ENV_FILE_KEY] || DEFAULT_ENV_FILE;
+
+debug_info(`environment being loaded from ${env_file}`);
+
+// Load up environment variables from the env.json file
+var env = require(env_file);
 
 // Set up Constants
 const CCDT = "MQCCDTURL";
