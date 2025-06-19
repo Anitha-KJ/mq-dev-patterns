@@ -42,7 +42,7 @@ jobs:
       - name: Wait for QMGR to be running
         run: |
           for i in {1..12}; do
-            STATUS=$(podman exec QM1 bash -c "dspmq -o json" | jq -r '.[0].state')
+            STATUS=$(podman exec QM1 bash -c "dspmq -m QM1" | grep -o 'STATUS([^)]*)' | cut -d'(' -f2 | cut -d')' -f1)
             echo "QMGR state: $STATUS"
             if [ "$STATUS" = "Running" ]; then
               echo "QM1 is running"
