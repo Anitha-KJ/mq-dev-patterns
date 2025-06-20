@@ -76,8 +76,7 @@ jobs:
           done
       - name: check for the qmgr's 
         run: |
-          podman exec QM1 bash
-          dspmq
+          podman exec QM1 bash -c "dspmq"
 
       - name: Install dependencies
         working-directory: Node.js
