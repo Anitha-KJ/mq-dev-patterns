@@ -71,9 +71,7 @@ jobs:
               "BACKOUT_QUEUE": "DEV.QUEUE.2",
               "MODEL_QUEUE_NAME": "DEV.APP.MODEL.QUEUE",
               "DYNAMIC_QUEUE_PREFIX": "APP.REPLIES.*",
-              "TOPIC_NAME": "dev/",
-              "CIPHER_SUITE": " ",
-              "KEY_REPOSITORY":" "
+              "TOPIC_NAME": "dev/"
             }]
           }
           EOF

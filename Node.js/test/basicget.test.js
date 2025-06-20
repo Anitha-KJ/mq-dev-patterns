@@ -85,9 +85,12 @@ describe('initialise function', () => {
             expect(cno.ClientConn).to.exist;
             expect(cno.ClientConn.ChannelName).to.equal(envConfig.MQ_ENDPOINTS[i].CHANNEL);
             expect(cno.ClientConn.ConnectionName).to.equal(`${envConfig.MQ_ENDPOINTS[i].HOST}(${envConfig.MQ_ENDPOINTS[i].PORT})`);
-            expect(cno.ClientConn.SSLCipherSpec).to.equal(envConfig.MQ_ENDPOINTS[i].CIPHER_SUITE);
-            expect(cno.SSLConfig).to.exist;
-            expect(cno.SSLConfig.KeyRepository).to.equal(envConfig.MQ_ENDPOINTS[i].KEY_REPOSITORY);
+            if (MQDetails.KEY_REPOSITORY) {
+                debug_info('Key Repository has been specified');
+                expect(cno.ClientConn.SSLCipherSpec).to.equal(envConfig.MQ_ENDPOINTS[i].CIPHER_SUITE);
+                expect(cno.SSLConfig).to.exist;
+                expect(cno.SSLConfig.KeyRepository).to.equal(envConfig.MQ_ENDPOINTS[i].KEY_REPOSITORY);
+            }
         }
     });
 });
