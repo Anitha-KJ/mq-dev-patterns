@@ -88,5 +88,5 @@ jobs:
       - name: Run Node.js tests
         working-directory: Node.js
         env: 
-          EnvFile: "env.json"
+          EnvFile: "/home/runner/work/mq-dev-patterns/mq-dev-patterns/Node.js/env.json"
         run: mocha
