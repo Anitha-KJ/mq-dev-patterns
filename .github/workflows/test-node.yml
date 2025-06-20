@@ -76,7 +76,7 @@ jobs:
           done
       - name: check for the qmgr's 
         run: |
-          podman exec -ti QM1 bash
+          podman exec QM1 bash
           dspmq
 
       - name: Install dependencies
