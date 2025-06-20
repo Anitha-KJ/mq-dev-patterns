@@ -39,7 +39,6 @@ import com.ibm.mq.jms.MQDestination;
 // import jakarta.jms.JMSException;
 // import jakarta.jms.JMSProducer;
 // import jakarta.jms.TextMessage;
-// 
 
 // import com.ibm.msg.client.jakarta.jms.JmsConnectionFactory;
 // import com.ibm.msg.client.jakarta.jms.JmsFactoryFactory;
