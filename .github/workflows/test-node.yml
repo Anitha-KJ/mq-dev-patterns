@@ -35,6 +35,9 @@ jobs:
             }]
           }
           EOF
+          echo "PWD: $(pwd)"
+          ls -l
+          cat env.json
 
       - name: Install Podman
         run: |
