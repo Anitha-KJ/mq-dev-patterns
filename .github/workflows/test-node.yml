@@ -15,30 +15,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Create env.json
-        working-directory: Node.js
-        run: |
-          cat << EOF > env.json
-          {
-            "MQ_ENDPOINTS": [{
-              "HOST": "127.0.0.1",
-              "PORT": "1414",
-              "CHANNEL": "DEV.APP.SVRCONN",
-              "QMGR": "QM1",
-              "APP_USER": "app",
-              "APP_PASSWORD": "passw0rd",
-              "QUEUE_NAME": "DEV.QUEUE.1",
-              "BACKOUT_QUEUE": "DEV.QUEUE.2",
-              "MODEL_QUEUE_NAME": "DEV.APP.MODEL.QUEUE",
-              "DYNAMIC_QUEUE_PREFIX": "APP.REPLIES.*",
-              "TOPIC_NAME": "dev/"
-            }]
-          }
-          EOF
-          echo "PWD: $(pwd)"
-          ls -l
-          cat env.json
-
       - name: Install Podman
         run: |
           sudo apt-get update
@@ -79,6 +55,30 @@ jobs:
         run: |
           podman exec QM1 bash -c "dspmq"
 
+      - name: Create env.json
+        working-directory: Node.js
+        run: |
+          cat << EOF > env.json
+          {
+            "MQ_ENDPOINTS": [{
+              "HOST": "127.0.0.1",
+              "PORT": "1414",
+              "CHANNEL": "DEV.APP.SVRCONN",
+              "QMGR": "QM1",
+              "APP_USER": "app",
+              "APP_PASSWORD": "passw0rd",
+              "QUEUE_NAME": "DEV.QUEUE.1",
+              "BACKOUT_QUEUE": "DEV.QUEUE.2",
+              "MODEL_QUEUE_NAME": "DEV.APP.MODEL.QUEUE",
+              "DYNAMIC_QUEUE_PREFIX": "APP.REPLIES.*",
+              "TOPIC_NAME": "dev/"
+            }]
+          }
+          EOF
+          echo "PWD: $(pwd)"
+          ls -l
+          cat env.json
+
       - name: Install dependencies
         working-directory: Node.js
         run: |
@@ -88,5 +88,5 @@ jobs:
       - name: Run Node.js tests
         working-directory: Node.js
         env: 
-          EnvFile: "../Node.js/env.json"
+          EnvFile: "env.json"
         run: mocha
