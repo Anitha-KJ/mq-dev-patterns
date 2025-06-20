@@ -81,9 +81,7 @@ jobs:
 
       - name: Run the JMS tests
         working-directory: JMS
-        env: 
-          EnvFile: "/home/runner/work/mq-dev-patterns/mq-dev-patterns/Node.js/env.json"
         run: |
-          mvn -Dmaven.test.skip=false test
+          mvn -Dmaven.test.skip=false test -DEnvFile="/home/runner/work/mq-dev-patterns/mq-dev-patterns/Node.js/env.json"
       - run: echo JMS tests have been executed
       
