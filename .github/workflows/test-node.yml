@@ -74,6 +74,10 @@ jobs:
             echo "Waiting for QMGR to start..."
             sleep 5
           done
+      - name: check for the qmgr's 
+        run: |
+          podman exec -ti QM1 bash
+          dspmq
 
       - name: Install dependencies
         working-directory: Node.js
