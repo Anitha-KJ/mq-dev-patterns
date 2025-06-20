@@ -109,7 +109,7 @@ public class JmsPub {
       logger.info("Publishing messages.\n");
 
       try {
-        publisher.send(destination, "this is a message");
+        publisher.send(destination, "this is a message " + i);
         logger.info("message was sent");
         Thread.sleep(2000);
       } catch (JMSRuntimeException jmsex) {

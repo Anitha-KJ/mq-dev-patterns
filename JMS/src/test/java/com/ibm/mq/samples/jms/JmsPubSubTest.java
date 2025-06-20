@@ -35,50 +35,50 @@ public class JmsPubSubTest {
         logger.addHandler(logHandler);
     }
 
-    // //Test to verify JmsPub and JmsSub
-    // @Test
-    // public void testJmsPubSub(){
-    //     //Create a thread for Subscription using JmsSub
-    //     Thread subThread = new Thread(() -> {
-    //         try {
-    //             JmsSub.main(null);
-    //         } catch (Exception e) {
-    //             e.printStackTrace();
-    //         }
-    //     });
+    //Test to verify JmsPub and JmsSub
+    @Test
+    public void testJmsPubSub(){
+        //Create a thread for Subscription using JmsSub
+        Thread subThread = new Thread(() -> {
+            try {
+                JmsSub.main(null);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 
-    //     Thread pubThread = new Thread(() -> {
-    //         try {
-    //             JmsPub.main(null);
-    //         } catch (Exception e) {
-    //             e.printStackTrace();
-    //         }
-    //     });
+        Thread pubThread = new Thread(() -> {
+            try {
+                JmsPub.main(null);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 
-    //     subThread.start();
-    //     //Wait for subscription to take place before publishing
-    //     try {
-    //         Thread.sleep(2000);
-    //     } catch (Exception e) {
-    //         e.printStackTrace();
-    //     }
-    //     pubThread.start();
+        subThread.start();
+        //Wait for subscription to take place before publishing
+        try {
+            Thread.sleep(2000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        pubThread.start();
 
-    //     try {
-    //         pubThread.join();
-    //         subThread.interrupt();
-    //     } catch (Exception e) {
-    //         e.printStackTrace();
-    //     }
+        try {
+            pubThread.join();
+            subThread.interrupt();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         
-    //     //Assert successful subscription using the logs
-    //     String logs = logHandler.getLogs();
-    //     assertTrue(logs.contains("Sub application is starting"));
-    //     assertTrue(logs.contains("consumer created"));
-    //     assertTrue(logs.contains("Pub application is starting"));
-    //     assertTrue(logs.contains("Publishing messages."));
-    //     assertTrue(logs.contains("message was sent"));
-    //     assertTrue(logs.contains("Received message: this is a message 0"));
-    //     assertTrue(logs.contains("Received message: this is a message 19"));
-    // }
+        //Assert successful subscription using the logs
+        String logs = logHandler.getLogs();
+        assertTrue(logs.contains("Sub application is starting"));
+        assertTrue(logs.contains("consumer created"));
+        assertTrue(logs.contains("Pub application is starting"));
+        assertTrue(logs.contains("Publishing messages."));
+        assertTrue(logs.contains("message was sent"));
+        assertTrue(logs.contains("Received message: this is a message 0"));
+        assertTrue(logs.contains("Received message: this is a message 19"));
+    }
 }
