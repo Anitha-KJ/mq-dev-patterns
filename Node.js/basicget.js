@@ -22,7 +22,6 @@
 // https://github.com/ibm-messaging/mq-mqi-nodejs/blob/master/samples/amqsconn.js
 // and
 // https://github.com/ibm-messaging/mq-mqi-nodejs/blob/master/samples/amqsput.js
-//
 // Values for Queue Manager, Queue, Host, Port and Channel are
 // passed in as envrionment variables.
 const constants = require('./constants');
