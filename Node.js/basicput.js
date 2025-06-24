@@ -26,8 +26,6 @@
 // passed in as envrionment variables.
 // const constants = require('./constants');
 
-//
-
 const fs = require('fs');
 // Import the MQ package
 const mq = require('ibmmq');
