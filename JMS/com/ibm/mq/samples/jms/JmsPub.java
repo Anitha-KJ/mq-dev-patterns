@@ -133,6 +133,7 @@ public class JmsPub {
 
     // If the CCDT is in use then a connection string will 
     // not be needed.
+    //
     if (null == CCDTURL) {
         ConnectionString = env.getConnectionString();
     }
