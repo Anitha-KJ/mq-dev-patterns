@@ -44,7 +44,7 @@ jobs:
           for i in {1..6}; do
             STATUS=$(podman exec QM1 bash -c "dspmq -nm QM1" | grep -o 'STATUS([^)]*)')
             echo "QMGR state: $STATUS"
-            if [ "$STATUS" = "STATUS(Running)" ]; then
+            if [ "$STATUS" = "STATUS(RUNNING)" ]; then
               echo "QM1 is running"
               break
             fi
