@@ -47,7 +47,7 @@ import com.ibm.mq.jms.MQDestination;
 // import com.ibm.msg.client.jakarta.wmq.WMQConstants;
 
 // import com.ibm.mq.jakarta.jms.MQDestination;
-
+//
 
 import com.ibm.mq.samples.jms.SampleEnvSetter;
 import com.ibm.mq.samples.jms.JwtHelper;
