@@ -32,6 +32,7 @@ var mq = require('ibmmq');
 // Import any other packages needed
 var StringDecoder = require('string_decoder').StringDecoder;
 var decoder = new StringDecoder('utf8');
+//
 
 // Load up missing envrionment variables from the env.json file
 // var env = require('../env.json');
