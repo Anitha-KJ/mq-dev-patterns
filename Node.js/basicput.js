@@ -25,6 +25,7 @@
 // Values for Queue Manager, Queue, Host, Port and Channel are
 // passed in as envrionment variables.
 // const constants = require('./constants');
+//
 
 const fs = require('fs');
 // Import the MQ package
