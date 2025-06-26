@@ -28,6 +28,7 @@ const constants = require('./constants');
 
 const fs = require('fs');
 // Import the MQ package
+//
 var mq = require('ibmmq');
 // Import any other packages needed
 var StringDecoder = require('string_decoder').StringDecoder;
