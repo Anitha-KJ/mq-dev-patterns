@@ -45,6 +45,7 @@ import com.ibm.mq.jms.MQDestination;
 // import com.ibm.msg.client.jakarta.wmq.WMQConstants;
 
 // import com.ibm.mq.jakarta.jms.MQDestination;
+
 //import com.ibm.mq.jms.MQConnectionFactory;
 
 import com.ibm.mq.samples.jms.SampleEnvSetter;
@@ -72,7 +73,8 @@ public class JmsPut {
     private static String accessToken = null;
     
     public static void main(String[] args) {
-        initialiseLogging();
+        // initialiseLogging();
+        LoggingHelper.init(logger);
         SampleEnvSetter env = new SampleEnvSetter();
         jh = new JwtHelper(env);
         if (jh.isJwtEnabled()) {

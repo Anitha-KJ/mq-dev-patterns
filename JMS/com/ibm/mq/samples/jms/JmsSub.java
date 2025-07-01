@@ -69,7 +69,8 @@ public class JmsSub {
     private static String accessToken = null;
 
     public static void main(String[] args) {
-        initialiseLogging();
+        // initialiseLogging();
+        LoggingHelper.init(logger);
         SampleEnvSetter env = new SampleEnvSetter();
         jh = new JwtHelper(env);
         if (jh.isJwtEnabled()) {

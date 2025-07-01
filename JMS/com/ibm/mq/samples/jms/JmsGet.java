@@ -77,7 +77,8 @@ public class JmsGet {
     public static void main(String[] args) {
         logger.info("Get application is starting");
 
-        initialiseLogging();
+        // initialiseLogging();
+        LoggingHelper.init(logger);
 
         SampleEnvSetter env = new SampleEnvSetter();
         int limit = env.getCount();

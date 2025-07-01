@@ -58,7 +58,7 @@ public class JmsPubSubTest {
         subThread.start();
         //Wait for subscription to take place before publishing
         try {
-            Thread.sleep(2000);
+            Thread.sleep(5000);
         } catch (Exception e) {
             e.printStackTrace();
         }
