@@ -57,7 +57,7 @@ public class SampleEnvSetterTest {
         // Test with Non-Existing key
         value = envSetter.getEnvValue("NON_EXISTING_KEY", 0);
         assertNull(value);
-
+        System.clearProperty("HOST");
     }
 
     @Test
@@ -80,7 +80,7 @@ public class SampleEnvSetterTest {
         // Test for non-existing key with default value
         value = envSetter.getEnvValueOrDefault("NON_EXISTING_KEY", "test", 1);
         assertEquals("test", value);
-
+        System.clearProperty("QMGR");
     }
 
     @Test 
@@ -92,7 +92,7 @@ public class SampleEnvSetterTest {
         //Test for default port given invalid port key
         value = envSetter.getPortEnvValue("INVALID_PORT", 0);
         assertEquals(1414 , value);
-
+        System.clearProperty("PORT");
     }
 
     @Test
