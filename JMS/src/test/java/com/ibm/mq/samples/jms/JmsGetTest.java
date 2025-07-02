@@ -26,6 +26,7 @@ import javax.jms.Queue;
 import javax.jms.QueueBrowser;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeAll;
 
 public class JmsGetTest {
     private JMSContext context = null;

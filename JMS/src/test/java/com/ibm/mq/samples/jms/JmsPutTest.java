@@ -27,6 +27,7 @@ import javax.jms.TextMessage;
 import javax.jms.JMSRuntimeException;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeAll;
 
 import com.ibm.mq.MQException;
 import com.ibm.mq.constants.MQConstants;
@@ -38,7 +39,7 @@ public class JmsPutTest {
     private JMSConsumer consumer = null;
     private ConnectionHelper ch = null;
     private static long TIMEOUTTIME = 5000;
-     private static SampleEnvSetter envSetter;
+    private static SampleEnvSetter envSetter;
     
     @BeforeAll
     public static void setUp(){
