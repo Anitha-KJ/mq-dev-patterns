@@ -19,17 +19,33 @@ package com.ibm.mq.samples.jms;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterAll;
 
 public class SampleEnvSetterTest {
 
+    private static String originalEnvFile;
     private static SampleEnvSetter envSetter;
-    
+
     @BeforeAll
-    public static void setUp(){
-        System.setProperty(SampleEnvSetter.ENV_FILE , SampleEnvSetter.DEFAULT_ENV_FILE);
+    public static void setUp() {
+        // Save original value (if any)
+        originalEnvFile = System.getProperty(SampleEnvSetter.ENV_FILE);
+
+        // Force default ONLY for this test
+        System.setProperty(SampleEnvSetter.ENV_FILE, SampleEnvSetter.DEFAULT_ENV_FILE);
+
         envSetter = new SampleEnvSetter();
     }
 
+    @AfterAll
+    public static void tearDown() {
+        // Restore the original value so other tests are unaffected
+        if (originalEnvFile != null) {
+            System.setProperty(SampleEnvSetter.ENV_FILE, originalEnvFile);
+        } else {
+            System.clearProperty(SampleEnvSetter.ENV_FILE);
+        }
+    }
 
     @Test
     public void testGetEnvValueWithoutEnv() {
