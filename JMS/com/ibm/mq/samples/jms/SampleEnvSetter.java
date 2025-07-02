@@ -38,6 +38,7 @@ public class SampleEnvSetter {
     private static final String ZOS = "z/os";
     private static final int DEFAULT_MQI_PORT = 1414;
 
+    public static final String TEST_ENV_FILE = "EnvFile";
     public static final String ENV_FILE = "EnvFile";
     public static final String DEFAULT_ENV_FILE = "../env.json";    
     public static final String DEFAULT_Z_ENV_FILE ="../env-zbindings.json";
