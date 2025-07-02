@@ -73,8 +73,8 @@ public class JmsPut {
     private static String accessToken = null;
     
     public static void main(String[] args) {
-        // initialiseLogging();
-        LoggingHelper.init(logger);
+        initialiseLogging();
+        // LoggingHelper.init(logger);
         SampleEnvSetter env = new SampleEnvSetter();
         jh = new JwtHelper(env);
         if (jh.isJwtEnabled()) {
