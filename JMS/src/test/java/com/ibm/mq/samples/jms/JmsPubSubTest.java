@@ -27,8 +27,12 @@ import org.junit.jupiter.api.BeforeAll;
 public class JmsPubSubTest {
     //Add a custom logHandler to the logger to get the logs
     private static TestLogHandler logHandler;
+    private static SampleEnvSetter envSetter;
+
     @BeforeAll
     public static void setUp(){
+        System.setProperty(SampleEnvSetter.ENV_FILE , SampleEnvSetter.TEST_ENV_FILE);
+        envSetter = new SampleEnvSetter();
         Logger logger = Logger.getLogger("com.ibm.mq.samples.jms");
         logger.setLevel(Level.ALL);
         logHandler = new TestLogHandler();

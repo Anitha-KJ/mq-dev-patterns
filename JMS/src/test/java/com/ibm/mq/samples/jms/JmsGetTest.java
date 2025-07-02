@@ -32,6 +32,13 @@ public class JmsGetTest {
     private Queue destination = null;
     private QueueBrowser browser = null;
     private ConnectionHelper ch = null;
+    private static SampleEnvSetter envSetter;
+    
+    @BeforeAll
+    public static void setUp(){
+        System.setProperty(SampleEnvSetter.ENV_FILE , SampleEnvSetter.TEST_ENV_FILE);
+        envSetter = new SampleEnvSetter();
+    }
 
     //Test to verify working of JmsGet
     @Test

@@ -38,6 +38,13 @@ public class JmsPutTest {
     private JMSConsumer consumer = null;
     private ConnectionHelper ch = null;
     private static long TIMEOUTTIME = 5000;
+     private static SampleEnvSetter envSetter;
+    
+    @BeforeAll
+    public static void setUp(){
+        System.setProperty(SampleEnvSetter.ENV_FILE , SampleEnvSetter.TEST_ENV_FILE);
+        envSetter = new SampleEnvSetter();
+    }
 
     //Test to verify the working of JmsPut application
     //It first runs the JmsPut, the creates a consumer to consume and verify those messages
