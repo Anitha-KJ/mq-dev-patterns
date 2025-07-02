@@ -19,10 +19,12 @@ package com.ibm.mq.samples.jms;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterAll;
 
 public class SampleEnvSetterTest {
 
     private static SampleEnvSetter envSetter;
+    private static String originalEnvFile;
 
     @BeforeAll
     public static void setUp() {
