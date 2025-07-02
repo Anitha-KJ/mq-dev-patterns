@@ -34,33 +34,38 @@ public class JmsGetTest {
     private QueueBrowser browser = null;
     private ConnectionHelper ch = null;
     private static SampleEnvSetter envSetter;
-    
+
     @BeforeAll
-    public static void setUp(){
-        System.setProperty(SampleEnvSetter.ENV_FILE , SampleEnvSetter.TEST_ENV_FILE);
-        envSetter = new SampleEnvSetter();
+    public static void setUp() {
+        String envFile = System.getProperty(SampleEnvSetter.ENV_FILE);
+        if (envFile != null && !envFile.isEmpty()) {
+            System.setProperty(SampleEnvSetter.ENV_FILE, envFile);
+        }
+        envSetter = new SampleEnvSetter(); 
     }
 
-    //Test to verify working of JmsGet
+    // Test to verify working of JmsGet
     @Test
-    public void testJmsGet(){
-        //Put messages to the queue
+    public void testJmsGet() {
+        // Put messages to the queue
         JmsPut.main(null);
-        //Run JmsGet to get all the messages
+        // Run JmsGet to get all the messages
         JmsGet.main(null);
-        
+
         ch = new ConnectionHelper("Basic Get", 0);
         context = ch.getContext();
-        destination = (Queue)ch.getDestination();
+        destination = (Queue) ch.getDestination();
         browser = context.createBrowser(destination);
         try {
-            //Browse the queue to verify no existing messages in the queue as JmsGet was called.
+            // Browse the queue to verify no existing messages in the queue as JmsGet was
+            // called.
             Enumeration<?> messages = browser.getEnumeration();
             assertFalse(messages.hasMoreElements());
         } catch (JMSException jmsex) {
             jmsex.printStackTrace();
         }
-        ch.closeContext();;
+        ch.closeContext();
+        ;
     }
-    
+
 }

@@ -42,9 +42,12 @@ public class JmsPutTest {
     private static SampleEnvSetter envSetter;
     
     @BeforeAll
-    public static void setUp(){
-        System.setProperty(SampleEnvSetter.ENV_FILE , SampleEnvSetter.TEST_ENV_FILE);
-        envSetter = new SampleEnvSetter();
+    public static void setUp() {
+        String envFile = System.getProperty(SampleEnvSetter.ENV_FILE);
+        if (envFile != null && !envFile.isEmpty()) {
+            System.setProperty(SampleEnvSetter.ENV_FILE, envFile);
+        }
+        envSetter = new SampleEnvSetter(); 
     }
 
     //Test to verify the working of JmsPut application

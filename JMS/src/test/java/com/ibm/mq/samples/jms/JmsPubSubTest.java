@@ -31,8 +31,11 @@ public class JmsPubSubTest {
 
     @BeforeAll
     public static void setUp(){
-        System.setProperty(SampleEnvSetter.ENV_FILE , SampleEnvSetter.TEST_ENV_FILE);
-        envSetter = new SampleEnvSetter();
+        String envFile = System.getProperty(SampleEnvSetter.ENV_FILE);
+        if (envFile != null && !envFile.isEmpty()) {
+            System.setProperty(SampleEnvSetter.ENV_FILE, envFile);
+        }
+        envSetter = new SampleEnvSetter(); 
         Logger logger = Logger.getLogger("com.ibm.mq.samples.jms");
         logger.setLevel(Level.ALL);
         logHandler = new TestLogHandler();
