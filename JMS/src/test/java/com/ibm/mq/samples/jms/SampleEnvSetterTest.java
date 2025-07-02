@@ -23,13 +23,22 @@ import org.junit.jupiter.api.BeforeAll;
 public class SampleEnvSetterTest {
 
     private static SampleEnvSetter envSetter;
-    
+
     @BeforeAll
-    public static void setUp(){
-        System.setProperty(SampleEnvSetter.ENV_FILE , SampleEnvSetter.DEFAULT_ENV_FILE);
+    public static void setUp() {
+        originalEnvFile = System.getProperty(SampleEnvSetter.ENV_FILE);
+        System.setProperty(SampleEnvSetter.ENV_FILE, SampleEnvSetter.DEFAULT_ENV_FILE);
         envSetter = new SampleEnvSetter();
     }
 
+    @AfterAll
+    public static void tearDown() {
+        if (originalEnvFile != null) {
+            System.setProperty(SampleEnvSetter.ENV_FILE, originalEnvFile);
+        } else {
+            System.clearProperty(SampleEnvSetter.ENV_FILE);
+        }
+    }
 
     @Test
     public void testGetEnvValueWithoutEnv() {
@@ -66,46 +75,46 @@ public class SampleEnvSetterTest {
 
     }
 
-    @Test 
-    public void testGetPortEnvValue(){
-        //Test for port key
+    @Test
+    public void testGetPortEnvValue() {
+        // Test for port key
         int value = envSetter.getPortEnvValue("PORT", 0);
         assertNotNull(value);
 
-        //Test for default port given invalid port key
+        // Test for default port given invalid port key
         value = envSetter.getPortEnvValue("INVALID_PORT", 0);
-        assertEquals(1414 , value);
+        assertEquals(1414, value);
 
     }
 
     @Test
-    public void testGEBVWithEnv(){
+    public void testGEBVWithEnv() {
         System.setProperty("BINDINGS", "true");
-        //Test for Non existing but existing env key
+        // Test for Non existing but existing env key
         Boolean value = envSetter.getEnvBooleanValue("BINDINGS", 0);
         assertTrue(value);
     }
 
-    @Test 
-    public void testGetCheckCCDT(){
-        //MQCCDTURL is not set
+    @Test
+    public void testGetCheckCCDT() {
+        // MQCCDTURL is not set
         String value = envSetter.getCheckForCCDT();
-        //Test for getCheckForCCDT when MQCCDTURL is not set
+        // Test for getCheckForCCDT when MQCCDTURL is not set
         assertNull(value);
 
-        //MQCCDTURL is set
+        // MQCCDTURL is set
         System.setProperty("MQCCDTURL", "file://../ccdt.json");
         value = envSetter.getCheckForCCDT();
-        //Test for getCheckForCCDT with MQCCDTURL set to correct ccdt file location
+        // Test for getCheckForCCDT with MQCCDTURL set to correct ccdt file location
         assertEquals("file://../ccdt.json", value);
         System.setProperty("MQCCDTURL", "file://ccdt.json");
         value = envSetter.getCheckForCCDT();
-        //Test for getCheckForCCDT with MQCCDTURL set to incorrect ccdt file location
+        // Test for getCheckForCCDT with MQCCDTURL set to incorrect ccdt file location
         assertNull(value);
     }
 
-    @Test 
-    public void testGetConnectionString(){
+    @Test
+    public void testGetConnectionString() {
         int count = envSetter.getCount();
         String value = envSetter.getConnectionString();
         String[] arrStrings = value.split(",");
@@ -113,10 +122,10 @@ public class SampleEnvSetterTest {
     }
 
     @Test
-    public void testMissingEnpointValues(){
+    public void testMissingEnpointValues() {
         int count = envSetter.getCount();
-        //Check for each endpoint for missing essential values
-        for(int idx = 0 ; idx < count ; idx++){
+        // Check for each endpoint for missing essential values
+        for (int idx = 0; idx < count; idx++) {
             String value = envSetter.getEnvValue("HOST", idx);
             assertNotNull(value);
             value = envSetter.getEnvValue("PORT", idx);
