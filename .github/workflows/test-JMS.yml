@@ -82,6 +82,9 @@ jobs:
       - name: Run the JMS tests
         working-directory: JMS
         run: |
-          mvn -Dmaven.test.skip=false test -DEnvFile="/home/runner/work/mq-dev-patterns/mq-dev-patterns/JMS/env.json" -DCIPHER_SUITE= -DCIPHER= -DKEY_REPOSITORY=
+          mvn -Dmaven.test.skip=false -DEnvFile="/home/runner/work/mq-dev-patterns/mq-dev-patterns/JMS/env.json" -Dtest=JmsPutTest test
+          mvn -Dmaven.test.skip=false -DEnvFile="/home/runner/work/mq-dev-patterns/mq-dev-patterns/JMS/env.json" -Dtest=JmsGetTest test
+          mvn -Dmaven.test.skip=false -DEnvFile="/home/runner/work/mq-dev-patterns/mq-dev-patterns/JMS/env.json" -Dtest=JmsPubSubTest test
+          mvn -Dmaven.test.skip=false -DEnvFile="/home/runner/work/mq-dev-patterns/mq-dev-patterns/JMS/env.json" -Dtest=SampleEnvSetterTest test
       - run: echo JMS tests have been executed
       
