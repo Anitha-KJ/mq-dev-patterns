@@ -55,7 +55,7 @@ import com.ibm.mq.samples.jms.LoggingHelper;
 public class JmsGet {
 
     private static final String DEFAULT_APP_NAME = "Dev Experience JmsGet";
-    // private static final Level LOGLEVEL = Level.ALL;
+    private static final Level LOGLEVEL = Level.ALL;
     private static final Logger logger = Logger.getLogger("com.ibm.mq.samples.jms");
 
     // Create variables for the connection to MQ
