@@ -67,6 +67,7 @@ public class SampleEnvSetterTest {
         // Test for non-existing key but existing Environment variable
         String value = envSetter.getEnvValue("APP_USER", 1);
         assertEquals("testUser", value);
+        System.clearProperty("APP_USER");
     }
 
     @Test
@@ -100,6 +101,7 @@ public class SampleEnvSetterTest {
         //Test for Non existing but existing env key
         Boolean value = envSetter.getEnvBooleanValue("BINDINGS", 0);
         assertTrue(value);
+        System.clearProperty("BINDINGS");
     }
 
     @Test 
@@ -118,6 +120,7 @@ public class SampleEnvSetterTest {
         value = envSetter.getCheckForCCDT();
         //Test for getCheckForCCDT with MQCCDTURL set to incorrect ccdt file location
         assertNull(value);
+        System.clearProperty("MQCCDTURL");
     }
 
     @Test 
