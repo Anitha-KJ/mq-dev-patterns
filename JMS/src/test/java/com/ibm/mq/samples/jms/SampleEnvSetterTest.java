@@ -30,8 +30,6 @@ public class SampleEnvSetterTest {
     public static void setUp() {
         // Save original value (if any)
         originalEnvFile = System.getProperty(SampleEnvSetter.ENV_FILE);
-
-        // Force default ONLY for this test
         System.setProperty(SampleEnvSetter.ENV_FILE, SampleEnvSetter.DEFAULT_ENV_FILE);
 
         envSetter = new SampleEnvSetter();
@@ -45,6 +43,7 @@ public class SampleEnvSetterTest {
         } else {
             System.clearProperty(SampleEnvSetter.ENV_FILE);
         }
+        // Clear the System Properties
         System.clearProperty("QUEUE_NAME");
         System.clearProperty("TOPIC_NAME");
         System.clearProperty("APP_PASSWORD");

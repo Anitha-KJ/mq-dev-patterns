@@ -33,17 +33,7 @@ public class JmsGetTest {
     private Queue destination = null;
     private QueueBrowser browser = null;
     private ConnectionHelper ch = null;
-    private static SampleEnvSetter envSetter;
-
-    @BeforeAll
-    public static void setUp() {
-        String envFile = System.getProperty(SampleEnvSetter.ENV_FILE);
-        if (envFile != null && !envFile.isEmpty()) {
-            System.setProperty(SampleEnvSetter.ENV_FILE, envFile);
-        }
-        envSetter = new SampleEnvSetter(); 
-    }
-
+   
     // Test to verify working of JmsGet
     @Test
     public void testJmsGet() {
