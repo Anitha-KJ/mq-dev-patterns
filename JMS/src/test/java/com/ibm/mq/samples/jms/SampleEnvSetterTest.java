@@ -45,6 +45,9 @@ public class SampleEnvSetterTest {
         } else {
             System.clearProperty(SampleEnvSetter.ENV_FILE);
         }
+        System.clearProperty("QUEUE_NAME");
+        System.clearProperty("TOPIC_NAME");
+        System.clearProperty("APP_PASSWORD");
     }
 
     @Test
@@ -160,5 +163,4 @@ public class SampleEnvSetterTest {
             assertNotNull(value);
         }
     }
-
 }
