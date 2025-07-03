@@ -73,12 +73,10 @@ jobs:
           }
           EOF
           echo "env.json path: $(pwd)"
-          PROJECT_DIR=$(pwd)
-          ENV_PATH="$PROJECT_DIR/env.json"
           cat env.json
 
       - name: Run the JMS tests
         working-directory: JMS
         run: |
-          mvn -Dmaven.test.skip=false -DEnvFile=$ENV_PATH test
+          mvn -Dmaven.test.skip=false -DEnvFile="/home/runner/work/mq-dev-patterns/mq-dev-patterns/JMS/env.json" test
       

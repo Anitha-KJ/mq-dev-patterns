@@ -31,7 +31,6 @@ public class SampleEnvSetterTest {
         // Save original value (if any)
         originalEnvFile = System.getProperty(SampleEnvSetter.ENV_FILE);
         System.setProperty(SampleEnvSetter.ENV_FILE, SampleEnvSetter.DEFAULT_ENV_FILE);
-
         envSetter = new SampleEnvSetter();
     }
 
@@ -43,10 +42,6 @@ public class SampleEnvSetterTest {
         } else {
             System.clearProperty(SampleEnvSetter.ENV_FILE);
         }
-        // Clear the System Properties
-        System.clearProperty("QUEUE_NAME");
-        System.clearProperty("TOPIC_NAME");
-        System.clearProperty("APP_PASSWORD");
     }
 
     @Test
@@ -59,7 +54,6 @@ public class SampleEnvSetterTest {
         // Test with Non-Existing key
         value = envSetter.getEnvValue("NON_EXISTING_KEY", 0);
         assertNull(value);
-        System.clearProperty("HOST");
     }
 
     @Test
@@ -82,7 +76,6 @@ public class SampleEnvSetterTest {
         // Test for non-existing key with default value
         value = envSetter.getEnvValueOrDefault("NON_EXISTING_KEY", "test", 1);
         assertEquals("test", value);
-        System.clearProperty("QMGR");
     }
 
     @Test 
@@ -94,7 +87,6 @@ public class SampleEnvSetterTest {
         //Test for default port given invalid port key
         value = envSetter.getPortEnvValue("INVALID_PORT", 0);
         assertEquals(1414 , value);
-        System.clearProperty("PORT");
     }
 
     @Test
