@@ -5,7 +5,7 @@ on:
     branches:
       - anitha-unittest-automation
     paths:
-      - 'Node.js/**'
+      - 'amqp/**'
 
 jobs:
   test:
