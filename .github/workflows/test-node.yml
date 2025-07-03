@@ -5,7 +5,7 @@ on:
     branches:
       - regression-test_anitha
     paths:
-      - 'Node.js/**'
+      - 'amqp/**'
 
 jobs:
   test:
