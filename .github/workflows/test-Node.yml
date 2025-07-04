@@ -83,5 +83,6 @@ jobs:
 
       - name: Run Node.js tests
         working-directory: Node.js
-        run: echo "EnvFile=$(pwd)/env.json" >> $GITHUB_ENV
-        run: mocha
+        run: |
+          echo "EnvFile=$(pwd)/env.json" >> $GITHUB_ENV
+          mocha
