@@ -1,4 +1,4 @@
-name: Run Node.js Tests with IBM MQ in Podman
+name: Run Node.js Tests 
 
 on:
   push:
@@ -84,5 +84,5 @@ jobs:
       - name: Run Node.js tests
         working-directory: Node.js
         env: 
-          EnvFile: "$(pwd)/env.json"
+          EnvFile: "/home/runner/work/mq-dev-patterns/mq-dev-patterns/Node.js/env.json"
         run: mocha
